@@ -54,7 +54,9 @@ public class Fill {
         if(y==height) return;
         if (getColor(x, y) == previousColor){
             xLeftSpan = x;
-            if(x!=0 && getColor(x-1, y) == previousColor) xLeftSpan = x-1;
+            while (xLeftSpan!=0 && previousColor == getColor(xLeftSpan - 1, y)) {
+                xLeftSpan--;
+            }
         }
         while (x <= xRight) {
             if(x==width-1) break;
@@ -71,6 +73,10 @@ public class Fill {
             x++;
         }
         if (xLeftSpan != -1 && xLeftSpan!=x) {
+            while (previousColor == getColor(x + 1, y)) {
+                x++;
+                if(x==width-1) break;
+            }
             stack.push(new Span(xLeftSpan, x, y));
         }
     }
