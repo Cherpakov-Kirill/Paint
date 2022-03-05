@@ -30,13 +30,13 @@ public class Fill {
         int xRight;
         while (previousColor == getColor(x - 1, y)) {
             x--;
-            if(x==0) break;
+            if (x == 0) break;
         }
         xLeft = x;
         x = start.x;
         while (previousColor == getColor(x + 1, y)) {
             x++;
-            if(x==width-1) break;
+            if (x == width - 1) break;
         }
         xRight = x;
         return new Span(new Point(xLeft, y), new Point(xRight, y));
@@ -50,16 +50,16 @@ public class Fill {
         int xLeftSpan = -1;
         if (findUnder) y = currentSpan.getY() + 1;
         else y = currentSpan.getY() - 1;
-        if(y==-1) return;
-        if(y==height) return;
-        if (getColor(x, y) == previousColor){
+        if (y == -1) return;
+        if (y == height) return;
+        if (getColor(x, y) == previousColor) {
             xLeftSpan = x;
-            while (xLeftSpan!=0 && previousColor == getColor(xLeftSpan - 1, y)) {
+            while (xLeftSpan > 0 && previousColor == getColor(xLeftSpan - 1, y)) {
                 xLeftSpan--;
             }
         }
         while (x <= xRight) {
-            if(x==width-1) break;
+            if (x == width - 1) break;
             if (getColor(x + 1, y) == previousColor) {
                 if (xLeftSpan == -1) {
                     xLeftSpan = x + 1;
@@ -72,10 +72,9 @@ public class Fill {
             }
             x++;
         }
-        if (xLeftSpan != -1 && xLeftSpan!=x) {
-            while (previousColor == getColor(x + 1, y)) {
+        if (xLeftSpan != -1 && xLeftSpan != x) {
+            while (x < width - 1 && previousColor == getColor(x + 1, y)) {
                 x++;
-                if(x==width-1) break;
             }
             stack.push(new Span(xLeftSpan, x, y));
         }
@@ -94,8 +93,8 @@ public class Fill {
         while (!stack.isEmpty()) {
             Span span = stack.pop();
             span.paint(img, fillColor);
-            findAllNewSpans(span,true);
-            findAllNewSpans(span,false);
+            findAllNewSpans(span, true);
+            findAllNewSpans(span, false);
         }
     }
 }
