@@ -17,7 +17,6 @@ import ru.nsu.cg.MainFrame;
 
 public class PaintMainWindow extends MainFrame implements ComponentListener {
     private final DrawPanel drawPanel;
-    private final JScrollPane scrollPane;
     private final String[] extensions;
 
     public PaintMainWindow() {
@@ -85,7 +84,7 @@ public class PaintMainWindow extends MainFrame implements ComponentListener {
 
 
             drawPanel = new DrawPanel();
-            scrollPane = new JScrollPane(drawPanel);
+            JScrollPane scrollPane = new JScrollPane(drawPanel);
             add(scrollPane);
             addComponentListener(this);
             setBackground(Color.WHITE);
@@ -115,18 +114,17 @@ public class PaintMainWindow extends MainFrame implements ComponentListener {
         System.out.println("Saving file to " + file.getAbsolutePath());
     }
 
-    //Tools/Line - draw a line
     public void clear() {
         selectTool("Tools/Clear");
         drawPanel.clear();
     }
 
-    //Tools/Fill - draw a line
+    //Tools/Fill
     public void fill() {
         selectTool("Tools/Fill");
     }
 
-    //Tools/Pen - draw a line
+    //Tools/Pen
     public void pen() {
         selectTool("Tools/Pen");
         LineParameters parameters = new LineParameters(drawPanel);
@@ -138,7 +136,7 @@ public class PaintMainWindow extends MainFrame implements ComponentListener {
         LineParameters parameters = new LineParameters(drawPanel);
     }
 
-    //Tools/Triangle - draw a line
+    //Tools/Triangle - draw a triangle
     public void drawTriangle() {
         selectTool("Tools/Triangle");
         ShapeStandardParameters parameters = new ShapeStandardParameters(drawPanel);
@@ -162,7 +160,7 @@ public class PaintMainWindow extends MainFrame implements ComponentListener {
         ShapeVerticesParameters parameters = new ShapeVerticesParameters(drawPanel);
     }
 
-    //Colors/Palette - draw a star
+    //Colors/Palette
     public void chooseColor() {
         Color color = JColorChooser.showDialog(this,
                 "Choose color", Color.BLACK);
@@ -176,67 +174,67 @@ public class PaintMainWindow extends MainFrame implements ComponentListener {
 
     }
 
-    //Colors/Black - draw a star
+    //Colors/Black
     public void selectBlackColor() {
         selectColor("Colors/Black");
         System.out.println("Select a black color");
     }
 
-    //Colors/White - draw a star
+    //Colors/White
     public void selectWhiteColor() {
         selectColor("Colors/White");
         System.out.println("Select a white color");
     }
 
-    //Colors/Gray - draw a star
+    //Colors/Gray
     public void selectGrayColor() {
         selectColor("Colors/Gray");
         System.out.println("Select a gray color");
     }
 
-    //Colors/Red - draw a star
+    //Colors/Red
     public void selectRedColor() {
         selectColor("Colors/Red");
         System.out.println("Select a red color");
     }
 
-    //Colors/Pink - draw a star
+    //Colors/Pink
     public void selectPinkColor() {
         selectColor("Colors/Pink");
         System.out.println("Select a pink color");
     }
 
-    //Colors/Orange - draw a star
+    //Colors/Orange
     public void selectOrangeColor() {
         selectColor("Colors/Orange");
         System.out.println("Select a orange color");
     }
 
-    //Colors/Yellow - draw a star
+    //Colors/Yellow
     public void selectYellowColor() {
         selectColor("Colors/Yellow");
         System.out.println("Select a yellow color");
     }
 
-    //Colors/Green - draw a star
+    //Colors/Green
     public void selectGreenColor() {
         selectColor("Colors/Green");
         System.out.println("Select a green color");
     }
 
-    //Colors/Magenta - draw a star
+    //Colors/Magenta
     public void selectMagentaColor() {
         selectColor("Colors/Magenta");
         System.out.println("Select a magenta color");
     }
 
-    //Colors/Cyan - draw a star
+    //Colors/Cyan
     public void selectCyanColor() {
         selectColor("Colors/Cyan");
         System.out.println("Select a cyan color");
     }
 
-    //Colors/Blue - draw a star
+    //Colors/Blue
     public void selectBlueColor() {
         selectColor("Colors/Blue");
         System.out.println("Select a blue color");

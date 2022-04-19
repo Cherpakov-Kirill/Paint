@@ -8,7 +8,7 @@ public class LineParameters extends ParametersWindow {
 
         JTextField thickness = new JTextField("5", 3);
         JLabel label1 = new JLabel("Thickness = ");
-        JSlider thicknessSlider = new JSlider(0,500,5);
+        JSlider thicknessSlider = new JSlider(1,500,5);
         thickness.addActionListener(new TextBoxListener(thickness,thicknessSlider, 0, 500));
         thicknessSlider.addChangeListener(new SliderListener(thickness,thicknessSlider));
         panel.add(label1);
@@ -16,7 +16,7 @@ public class LineParameters extends ParametersWindow {
         panel.add(thicknessSlider);
 
         int res = JOptionPane.showConfirmDialog(this, panel, "Line Parameters", JOptionPane.OK_CANCEL_OPTION);
-        if (res == 0 && checkValue(thickness.getText(), 0, 500)){
+        if (res == 0 && checkValue(thickness.getText(), 1, 500)){
             draw.setParameters(Integer.parseInt(thickness.getText()));
         }
     }

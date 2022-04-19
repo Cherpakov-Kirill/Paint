@@ -6,7 +6,7 @@ public class ShapeStandardParameters extends ParametersWindow {
     public ShapeStandardParameters(DrawForParameters draw) {
         super(2);
         JTextField radius = new JTextField("50", 4);
-        JSlider radiusSlider = new JSlider(0,2000,50);
+        JSlider radiusSlider = new JSlider(1,2000,50);
         radius.addActionListener(new TextBoxListener(radius,radiusSlider, 1, 2000));
         radiusSlider.addChangeListener(new SliderListener(radius,radiusSlider));
         JTextField rotation = new JTextField("0", 3);
